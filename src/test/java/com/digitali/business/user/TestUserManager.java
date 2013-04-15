@@ -1,7 +1,9 @@
-package base.business.user;
+package com.digitali.business.user;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +65,7 @@ public class TestUserManager {
 		Assert.assertEquals(newUser.getUsername(), user.getUsername());
 	}
 
-	@Test
+	@Ignore
 	public void testDelete() {
 		User deletedUser = userManager.delete(persistUser);
 		Assert.assertNotNull(deletedUser);

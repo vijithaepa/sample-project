@@ -16,4 +16,18 @@
 	<bean id="userManager" class="com.digitali.business.user.UserManager">
 	</bean>
 
+	<bean id="photoManager" class="com.digitali.business.photo.PhotoManager">
+	</bean>
+
+	<bean id="photoUtil" class="com.digitali.util.PhotoUtil">
+	</bean>
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="test-ApplicationResources.properties" />
+	</bean>
+
+	<context:property-placeholder
+		location="classpath:test-ApplicationResources.properties" />
+
 </beans>
