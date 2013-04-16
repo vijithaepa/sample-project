@@ -2,7 +2,7 @@ package com.digitali.dao.contract;
 
 import java.util.List;
 
-import com.digitali.entity.EntityDao;
+import com.digitali.dao.EntityDao;
 import com.digitali.entity.User;
 
 public interface UserDaoContract extends EntityDao<User> {
