@@ -19,9 +19,8 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 6371626273760590554L;
 
 	@Id
-	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment")
-	@Column(name = "USER_ID", unique = true)
+	@GeneratedValue
+	@Column(name = "USER_ID")
 	private long userId;
 	private String username;
 	private String password;
