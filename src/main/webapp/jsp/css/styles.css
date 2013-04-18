@@ -1,0 +1,281 @@
+body {
+	width: 1200px;
+	height: 933px;
+	border: 2px blue solid;
+	background-image: url("../images/base/dark-background.jpg");
+	font-family: Times;
+	color: white;
+}
+/* Common styles */
+a {
+	height: 40px;
+	text-decoration: none;
+	color: white;
+}
+
+section {
+	border: 1px white solid;
+}
+
+#container {
+	height: 930px;
+	width: 1150px;
+	margin: 0px auto;
+	border: 1px solid blue;
+}
+
+#left_column {
+	float: left;
+	width: 300px;
+	height: 630px;
+	border: 1px solid yellow;
+}
+
+#right_column {
+	float: left;
+	width: 820px;
+	height: 630px;
+	border: 1px solid yellow;
+}
+
+#logo {
+	width: 300px;
+	height: 200px;
+	background-image: url("../images/base/logo/logo-trn_01.png");
+	margin: 0px auto;
+}
+
+#menu {
+	width: 300px;
+	height: 420px;
+}
+
+#menu ul {
+	width: 250px;
+	padding: 10px;
+	margin: 10px;
+	list-style-type: none;
+}
+
+#menu li {
+	width: 200px;
+	height: 40px;
+	background-color: #A11;
+	padding: 10px 10px;
+	margin: 10px auto;
+}
+
+#menu li:HOVER {
+	background-color: #F11111;
+}
+
+#merqueu {
+	width: 818px;
+	height: 60px;
+	border: 1px solid red;
+	height: 60px;
+}
+
+/* -- home Page */
+#main_display {
+	width: 800px;
+	margin: 0px auto;
+	height: 560px;
+}
+
+/* -- My Page > Login */
+#login_form {
+	height: 170px;
+	width: 350px;
+	padding: 60px;
+	margin: 80px auto;
+}
+
+#login_form #title {
+	font-size: x-large;
+	color: gray;
+	width: 300px;
+	margin: 10px auto;
+}
+
+#login_form label {
+	vertical-align: text-bottom;
+	float: left;
+	width: 100px;
+	height: 25px;
+	margin: 10px 0px;
+	border: 0px solid red;
+}
+
+#login_form input.text {
+	float: right;
+	width: 200px;
+	margin-bottom: 20px;
+	padding: 5px;
+}
+
+#login_form #buttons {
+	float: right;
+	width: 180px;
+	height: 45px;
+	margin-right: 0px;
+	border: 0px solid yellow;
+}
+
+#login_form input.button {
+	float: right;
+	padding: 5px 10px 5px 10px;
+	margin-left: 10px;
+	margin-top: 10px;
+	width: 80px;
+}
+
+#login_form a {
+	height: 10px;
+	padding: 5px;
+	float: left;
+	padding: 5px;
+	float: left;
+	border: 0px solid red;
+}
+
+/*  -- MyPage > Register */
+#registry_form {
+	width: 445px;
+	margin: 0px auto;
+	padding: 25px;
+}
+
+#registry_form #title {
+	font-size: x-large;
+	color: gray;
+	width: 500px;
+	margin: 10px auto;
+}
+
+#registry_form label {
+	vertical-align: text-bottom;
+	float: left;
+	width: 130px;
+	height: 20px;
+	margin: 10px 0px;
+	padding-left: 25px;
+}
+
+#registry_form input.text {
+	width: 200px;
+	margin: 10px 30px;
+	padding: 5px;
+	margin: 10px 30px
+}
+
+#registry_form input.radio {
+	width: 70px;
+	margin: 10px auto;
+}
+
+#registry_form input.check {
+	width: 12px;
+	margin-top: 10px;
+	margin-left: 27px;
+}
+
+#registry_form select {
+	width: 215px;
+	height: 24px;
+	margin-top: 10px;
+	margin-left: 30px;
+}
+
+#registry_form div.button {
+	float: right;
+	margin: 25px 44px;
+}
+
+/* My Photo view page */
+#my_photo_view {
+	width: 750px;
+	height: 540px;
+	margin: 0px auto;
+	margin: 10px auto;
+	border: 1px solid red;
+}
+
+#my_photo_view #title {
+	font-size: x-large;
+	color: gray;
+	width: 500px;
+	padding: 20px;
+}
+
+#my_photo_view textarea {
+	float: left;
+	width: 550px;
+	height: 450px;
+	width: 450px;
+	height: 450px;
+	margin: 10px 10px;
+}
+
+#my_photo_view section {
+	width: 240px;
+	float: right;
+	margin: 10px 10px;
+	height: 450px;
+}
+
+#my_photo_view a {
+	font-size: large;
+	margin-left: 20px;
+}
+
+/*  -- Photo Upload Page */
+#my_photo_upload {
+	width: 500px;
+	margin: 50px auto;
+}
+
+#my_photo_upload #title {
+	font-size: x-large;
+	color: gray;
+	width: 400px;
+	margin: 10px auto;
+}
+
+#my_photo_upload label {
+	vertical-align: text-bottom;
+	float: left;
+	width: 130px;
+	height: 20px;
+	margin: 10px 0px;
+	padding-left: 25px;
+}
+
+#my_photo_upload input.text {
+	float: left;
+	width: 200px;
+	margin: 10px 30px;
+	padding: 5px;
+	margin: 10px 30px;
+	width: 200px;
+}
+
+#my_photo_upload textarea {
+	float: left;
+	margin: 0px 30px;
+	width: 210px;
+}
+
+#my_photo_upload #buttons {
+	float: right;
+	margin-right: 90px;
+	border: 0px solid yellow;
+}
+
+#my_photo_upload input.button {
+	float: right;
+	padding: 5px 10px 5px 10px;
+	margin-right: 10px;
+	margin-top: 20px;
+	width: 80px;
+}

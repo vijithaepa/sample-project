@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+       "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+       "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+       
+<struts-config>
+
+	<!-- ==================== Form Bean Definitions -->
+	<form-beans>
+
+		<form-bean name="userForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="user" type="com.digitali.entity.User" />
+		</form-bean>
+
+		<form-bean name="photoForm"
+			type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="uploadFile" type="org.apache.struts.upload.FormFile" />
+			<form-property name="uploadedFiles" type="java.util.List" />
+			<form-property name="category" type="java.lang.String" />
+			<form-property name="title" type="java.lang.String" />
+			<form-property name="description" type="java.lang.String" />
+		</form-bean>
+
+	</form-beans>
+
+	<!-- ========== Global Exception Definitions -->
+	<global-exceptions>
+
+	</global-exceptions>
+
+	<!-- ============ Global Forward Definitions -->
+	<global-forwards>
+		<forward name="/home" path="/homePage.do" />
+	</global-forwards>
+
+	<!-- ============ Action Mapping Definitions -->
+	<action-mappings type="com.digitali.presentation.BaseActionMapping">
+
+		<action path="/homePage" forward="/jsp/home.jsp" />
+
+		<action path="/mypage"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<set-property property="method" value="loadMyHomePageAction" />
+			<forward name="success" path="/jsp/user/myLoginPage.jsp"></forward>
+		</action>
+
+		<action path="/user/login"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<set-property property="method" value="userLoginAction" />
+			<forward name="success" path="/jsp/user/myPhotoPage.jsp" />
+			<forward name="fail" path="/jsp/user/login.jsp" />
+		</action>
+
+		<action path="/user/registerHome"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="request"
+			parameter="method">
+			<set-property property="method" value="loadRegisterHomePageAction" />
+			<forward name="success" path="/jsp/user/myRegisterPage.jsp" />
+		</action>
+
+		<action path="/user/register"
+			type="org.springframework.web.struts.DelegatingActionProxy" name="userForm"
+			scope="request" input="/jsp/user/login/UserRegistrationForm.jsp"
+			parameter="method">
+			<set-property property="method" value="userRegisterAction" />
+			<forward name="success" path="/jsp/user/myPhotoPage.jsp" />
+			<forward name="fail" path="/jsp/user/myRegisterPage.jsp" />
+		</action>
+
+		<action path="/user/uploadPhotoHome"
+			type="org.springframework.web.struts.DelegatingActionProxy" name="photoForm"
+			scope="request" parameter="method">
+			<set-property property="method" value="userPhotoUploadHomePageAction" />
+			<forward name="success" path="/jsp/user/uploadPhoto.jsp" />
+		</action>
+
+		<action path="/user/uploadPhoto"
+			type="org.springframework.web.struts.DelegatingActionProxy" name="photoForm"
+			scope="request" parameter="method">
+			<set-property property="method" value="userPhotoUploadAction" />
+			<forward name="success" path="/jsp/user/myPhotoPage.jsp" />
+			<forward name="fail" path="/jsp/user/uploadPhoto.jsp" />
+		</action>
+	</action-mappings>
+
+	<!-- ============ Message Resources Definitions -->
+
+	<message-resources parameter="ApplicationResources" />
+
+	<!-- ========= Validator plugin ====== -->
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+	</plug-in>
+
+	<!-- ======== Spring wiring plugin ==== -->
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation" value="/WEB-INF/applicationContext.xml" />
+	</plug-in>
+
+</struts-config>

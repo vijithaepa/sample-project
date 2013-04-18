@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--#################### Scheduler Jobs ###############-->
+<beans>
+
+	<bean id="schedulerTask" class="shedule.quartz.SchedulerTask"></bean>
+
+	<!-- Scheduler job -->
+	<bean name="schedulerJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="shedule.quartz.SchedulerJob" />
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="schedulerTask" value-ref="schedulerTask" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- Cron Trigger -->
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="schedulerJob" />
+		<property name="cronExpression" value="0/5 * * * * ?" />
+	</bean>
+
+	<!-- Simple Trigger -->
+	<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail" ref="schedulerJob" />
+		<property name="repeatInterval" value="7000" />
+		<property name="startDelay" value="1200" />
+	</bean>
+
+	<!-- Scheduler -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean="schedulerJob" />
+			</list>
+		</property>
+
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger" />
+				<!-- <ref bean="simpleTrigger" />-->
+			</list>
+		</property>
+	</bean>
+
+</beans>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC 
+		"-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" 
+		"http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+	<display-name>Sample Application</display-name>
+
+	<!-- Standard Action Servlet Configuration -->
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+
+	<!-- Standard Action Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- The Usual Welcome File List -->
+	<welcome-file-list>
+		<welcome-file>homePage.do</welcome-file>
+	</welcome-file-list>
+
+	<!-- Struts Tag Library Descriptors -->
+	<taglib>
+		<taglib-uri>/tags/struts-bean</taglib-uri>
+		<taglib-location>tld/struts-bean.tld</taglib-location>
+	</taglib>
+
+	<taglib>
+		<taglib-uri>/tags/struts-html</taglib-uri>
+		<taglib-location>tld/struts-html.tld</taglib-location>
+	</taglib>
+
+	<taglib>
+		<taglib-uri>/tags/struts-logic</taglib-uri>
+		<taglib-location>tld/struts-logic.tld</taglib-location>
+	</taglib>
+
+	<taglib>
+		<taglib-uri>/tags/struts-display-el</taglib-uri>
+		<taglib-location>tld/displaytag-el.tld</taglib-location>
+	</taglib>
+
+	<taglib>
+		<taglib-uri>/tags/struts-display</taglib-uri>
+		<taglib-location>tld/displaytag.tld</taglib-location>
+	</taglib>
+
+	<resource-ref>
+		<description>Resource reference to a container-managed JNDI JavaMail
+			factory for sending e-mails.</description>
+		<res-ref-name>mail/Session</res-ref-name>
+		<res-type>javax.mail.Session</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+</web-app>
+
+
+
+<!--<web-app> -->
+<!-- <icon> -->
+<!-- <display-name> -->
+<!-- <description> -->
+<!-- <distributable> -->
+<!-- <context-param> -->
+<!-- <filter> -->
+<!-- <filter-mapping> -->
+<!-- <listener> -->
+<!-- <servlet> -->
+<!-- <servlet-mapping> -->
+<!-- <session-config> -->
+<!-- <mime-mapping> -->
+<!-- <welcome-file-list> -->
+<!-- <error-page> -->
+<!-- <taglib> -->
+<!-- <resource-env-ref> -->
+<!-- <resource-ref> -->
+<!-- <security-constraint> -->
+<!-- <login-config> -->
+<!-- <security-role> -->
+<!-- <env-entry> -->
+<!-- <ejb-ref> -->
+<!-- <ejb-local-ref> -->
+<!--</web-app> -->

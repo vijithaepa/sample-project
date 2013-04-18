@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+
+	<context:component-scan base-package="com.digitali.business" />
+
+	<!-- Import Dao beans -->
+	<import resource="daoContext.xml" />
+
+	<bean id="userManager" class="com.digitali.business.user.UserManager">
+	</bean>
+
+	<bean id="photoManager" class="com.digitali.business.photo.PhotoManager">
+	</bean>
+
+	<bean id="photoUtil" class="com.digitali.util.PhotoUtil">
+		<!-- java.util.Properties -->
+		<property name="pros">
+			<props>
+				<prop key="IMG_UPLOAD_LOCATION">/home/vijitha/temp/img</prop>
+				<prop key="IMG_URI">http://localhost/Photo/</prop>
+				<prop key="THUMB_FOLDER_NAME">thumb</prop>
+				<prop key="THUMB_IMG_HEIGHT">200</prop>
+				<prop key="THUMB_IMG_WIDTH">200</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

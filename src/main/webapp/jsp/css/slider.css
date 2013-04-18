@@ -1,0 +1,43 @@
+body {
+	width: 1200px;
+	height: 933px;
+	border: 2px blue solid;
+	background-image: url("../images/base/dark-background.jpg");
+}
+
+#container {
+	width: 600px;
+	margin: 0 auto;
+	border: 2px red solid;
+}
+
+#slider {
+	width: 600px;
+	height: 400px;
+	overflow: hidden;
+	margin: 30px auto 10px auto;
+	border: 2px green solid;
+}
+
+#slider img {
+	margin:0px auto;
+	width: 500px;
+	display: none;
+	border: 2px yellow solid;
+}
+
+#container a {
+	padding: 5px 15px;
+	background-color: #ddd;
+	margin-top: 0px;
+	text-decoration: none;
+	color: #666;
+}
+
+#container a.left {
+	float: left;
+}
+
+#container a.right {
+	float: right;
+}

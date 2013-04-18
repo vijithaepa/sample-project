@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context path="/myapp" docBase="myapp" debug="5" crossContext="false">
+
+    <!-- JavaMail session factory -->
+    <Resource name="mail/Session"
+              auth="Container"
+              type="javax.mail.Session"
+              username="vijithaepa.sl@gmail.com"
+              password="epa@21029"
+              mail.debug="true"
+              mail.user="vijithaepa.sl@gmail.com"
+              mail.password="epa@21029"
+              mail.transport.protocol="smtp"
+              mail.smtp.host="your.gmail.com"
+              mail.smtp.auth="true"
+              mail.smtp.port="587"
+              mail.smtp.starttls.enable="true"/>
+</Context>

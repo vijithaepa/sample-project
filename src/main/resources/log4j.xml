@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="false">
+	<appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="d:/logs/application.log" />
+<!--		<param name="File" value="/home/dgiframe/logs/application.log" />-->
+		<param name="MaxFileSize" value="5MB" />
+		<param name="MaxBackupIndex" value="2" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{dd/MM/yy hh:mm:ss:sss z}] %5p %c{2}: %m%n" />
+			<!--
+				<param name="ConversionPattern" value="%d{ISO8601}: [%t] %C{1}, %p,
+				%c: %m%n" />
+			-->
+		</layout>
+	</appender>
+
+	<category name="com.vin">
+		<priority value="info" />
+	</category>
+	<category name="org.apache.catalina">
+		<priority value="error" />
+	</category>
+	<category name="org.apache.struts">
+		<priority value="info" />
+	</category>
+	<category name="org.hibernate">
+		<priority value="error" />
+	</category>
+	<root>
+		<priority value="info" />
+		<appender-ref ref="FILE" />
+	</root>
+</log4j:configuration>

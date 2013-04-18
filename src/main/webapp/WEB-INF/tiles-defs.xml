@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN"
+       "http://struts.apache.org/dtds/tiles-config_1_3.dtd">
+
+
+<tiles-definitions>
+
+	<!--
+		sample tiles definitions -->
+	<!--
+		<definition name=".mainLayout"
+		path="/common/layouts/classicLayout.jsp">
+	-->
+	<!--		<put name="title" value="Sample Page Title" />-->
+	<!--		<put name="header" value="/common/header.jsp" />-->
+	<!--		<put name="menu" value=".mainMenu" />-->
+	<!--		<put name="footer" value="/common/footer.jsp" />-->
+	<!--		<put name="body" value=".portal.body" />-->
+	<!--	</definition>-->
+	<!--
+		<definition name=".mainMenu" path="/common/layouts/vboxLayout.jsp">
+	-->
+	<!--		<putList name="list">-->
+	<!--			<add value=".menu.links" />-->
+	<!--			<add value=".menu.taglib.references" />-->
+	<!--			<add value=".menu.printer.friendly" />-->
+	<!--			<add value=".menu.old.documents" />-->
+	<!--		</putList>-->
+	<!--	</definition>-->
+	<!--	<definition name="aPage" extends=".mainLayout">-->
+	<!--		<put name="title" value="Another Title" />-->
+	<!--		<put name="body" value=".aPage.body" />-->
+	<!--	</definition>-->
+	<!-- end samples  -->
+
+
+	<definition name=".mainLayout" path="/jsp/base/layout/Layout_01.jsp">
+		<put name="title" value="Sample Page Title" />
+		<put name="logo" value="/jsp/base/pages/logo.jsp" />
+		<put name="header" value="/jsp/base/pages/header.jsp" />
+		<put name="footer" value="/jsp/base/pages/footer.jsp" />
+	</definition>
+
+	<definition name=".secondLayout" path="/jsp/base/layout/Layout_02.jsp">
+		<put name="title" value="Sample Page Title" />
+		<put name="logo" value="/jsp/base/pages/logo.jsp" />
+		<put name="header" value="/jsp/base/pages/header.jsp" />
+		<put name="footer" value="/jsp/base/pages/footer.jsp" />
+	</definition>
+
+	<definition name=".thirdLayout" path="/jsp/base/layout/Layout_03.jsp">
+		<put name="title" value="Sample Page Title" />
+		<put name="logo" value="/jsp/base/pages/logo.jsp" />
+		<put name="header" value="/jsp/base/pages/header.jsp" />
+		<put name="footer" value="/jsp/base/pages/footer.jsp" />
+	</definition>
+	
+	<definition name=".l1_contentLayout_3" path="/jsp/base/layout/L1_Content_3.jsp" />
+	<definition name=".l1_contentLayout_2" path="/jsp/base/layout/L1_Content_2.jsp" />
+	<definition name=".l1_contentLayout_1" path="/jsp/base/layout/L1_Content_1.jsp" />
+
+	<definition name=".l2_contentLayout" path="/jsp/base/layout/L2_Content.jsp" />
+	
+	<definition name=".l3_contentLayout" path="/jsp/base/layout/L3_Content.jsp" />
+	
+	<definition name=".bottomLayout" path="/jsp/base/layout/Layout_Bottom.jsp" />
+	
+	<definition name=".home.page" extends=".mainLayout">
+		<put name="title" value="User Login Page" />
+		<put name="marquee" value="/jsp/photo/home/marquee.jsp" />
+		<put name="imageSlider" value="/jsp/photo/home/image_slider.jsp" />
+		<put name="content_page" value=".l1_contentLayout_3" />
+		<put name="bottom_page" value=".bottomLayout" />
+	</definition>
+	
+	<definition name=".user.register.content" extends=".l2_contentLayout">
+		<put name="content" content="/jsp/user/login/UserRegistrationForm.jsp" />
+	</definition>
+	
+	<definition name=".user.register.page" extends=".secondLayout">
+		<put name="title" value="User Login Page" />
+		<put name="marquee" value="/jsp/photo/home/marquee.jsp" />
+		<put name="l2_content" value=".user.register.content" />
+		<put name="bottom_page" value=".bottomLayout" />
+	</definition>
+	 	
+	<definition name=".user.login.content" extends=".l1_contentLayout_3">
+		<put name="content_01" content="/jsp/user/login/Login.jsp" />
+	</definition>
+  
+	<definition name=".user.login.page" extends=".mainLayout">
+		<put name="title" value="User Login Page" />
+		<put name="marquee" value="/jsp/photo/home/marquee.jsp" />
+		<put name="content_page" content=".user.login.content"/>
+		<put name="bottom_page" content=".bottomLayout" />
+	</definition>
+
+	<definition name=".user.logedin.content" extends=".l3_contentLayout">
+		<put name="l3_l" content="/jsp/user/login/LoggedIn.jsp" />
+	</definition>
+
+	<definition name=".user.logedin.page" extends=".mainLayout">
+		<put name="title" value="User Logedin Page" />
+		<put name="imageSlider" value="/jsp/photo/home/image_slider.jsp" />
+		<put name="content_page" value=".user.logedin.content" />
+	</definition>
+
+	<definition name=".photo.home.page" extends=".mainLayout">
+		<put name="title" value="Photo Upload Page" />
+		<put name="content_01" value="/jsp/photo/PhotoUpload.jsp" />
+	</definition>
+
+	<definition name=".photo.upload.page" extends=".mainLayout">
+		<put name="title" value="Photo Updalod Page" />
+		<put name="content_01" value="/jsp/photo/PhotoUpload.jsp" />
+	</definition>
+
+</tiles-definitions>

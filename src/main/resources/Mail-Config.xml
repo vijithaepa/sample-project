@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--
+		This is a template message that we can pre-load with default state
+	-->
+	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+		<property name="from" value="customerservice@dgiframe.com" />
+		<property name="subject" value="User Registration" />
+	</bean>
+
+	<!-- and configure the MailSender with the authenticated session -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="mail.dgiframe.com" />
+		<property name="session" ref="mailSession" />
+	</bean>
+
+	<!-- our Authenticator implementation -->
+	<bean id="smtpAuthenticator" class="mail.util.SmtpAuthenticator">
+		<constructor-arg value="admin@dgiframe.com" />
+		<constructor-arg value="admin@123" />
+	</bean>
+
+	<!-- now setup an authenticated session -->
+	<bean id="mailSession" class="javax.mail.Session" factory-method="getInstance">
+		<constructor-arg>
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.socketFactory.port">465</prop>
+				<prop key="mail.smtp.socketFactory.class">
+					javax.net.ssl.SSLSocketFactory
+				</prop>
+				<prop key="mail.smtp.socketFactory.fallback">
+					false
+				</prop>
+			</props>
+		</constructor-arg>
+		<constructor-arg ref="smtpAuthenticator" />
+	</bean>
+
+	<!--Mail Server Username: admin+dgiframe.com-->
+	<!--Incoming Mail Server: mail.dgiframe.com-->
+	<!--Incoming Mail Server: (SSL) mail.lankahost.net-->
+	<!--
+		Outgoing Mail Server: mail.dgiframe.com (server requires
+		authentication) port 25
+	-->
+	<!--
+		Outgoing Mail Server: (SSL) mail.lankahost.net (server requires
+		authentication) port 465
+	-->
+	<!--
+		Supported Incoming Mail Protocols: POP3, POP3S (SSL/TLS), IMAP, IMAPS
+		(SSL/TLS)
+	-->
+	<!--Supported Outgoing Mail Protocols: SMTP, SMTPS (SSL/TLS)-->
+
+
+</beans>
