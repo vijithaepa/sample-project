@@ -10,34 +10,33 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 
 import org.apache.struts.upload.FormFile;
-import org.springframework.beans.factory.annotation.Value;
 
 public class PhotoUtil {
 
 	/**
 	 * Apache http web server(Actual) location for storing images.
 	 */
-	@Value("${photo.base.location}")
-	private String IMG_UPLOAD_LOCATION;
+	// @Value("${photo.base.location}")
+	private static final String IMG_UPLOAD_LOCATION = "photo.base.location";
 
 	/**
 	 * URI for images which is called in the browser.
 	 */
-	@Value("${photo.base.uri}")
-	private String IMG_URI;
+	private static final String IMG_URI = "photo.base.uri";
 
-	@Value("${photo.base.thumb.folder}")
-	private String THUMB_FOLDER_NAME;
+	private static final String THUMB_FOLDER_NAME = "photo.base.uri";
 
-	@Value("${photo.base.thumb.height}")
-	private int THUMB_IMG_HEIGHT;
+	private static final String THUMB_IMG_HEIGHT = "photo.base.thumb.height";
 
-	@Value("${photo.base.thumb.width}")
-	private int THUMB_IMG_WIDTH;
+	private static final String THUMB_IMG_WIDTH = "photo.base.thumb.width";
+
+	//Property reader from above bean property keys
+	private Properties pros;
 
 	private static Dimension THUMB_SIZE;
 
@@ -152,24 +151,32 @@ public class PhotoUtil {
 		return resizedImage;
 	}
 
+	public Properties getPros() {
+		return pros;
+	}
+
+	public void setPros(Properties pros) {
+		this.pros = pros;
+	}
+
 	public String getBaseLocation() {
-		return IMG_UPLOAD_LOCATION;
+		return pros.getProperty(IMG_UPLOAD_LOCATION);
 	}
 
 	public String getImageURI() {
-		return IMG_URI;
+		return pros.getProperty(IMG_URI);
 	}
 
 	public String getThumFolderName() {
-		return THUMB_FOLDER_NAME;
+		return pros.getProperty(THUMB_FOLDER_NAME);
 	}
 
 	public int getThumbImgHeight() {
-		return THUMB_IMG_HEIGHT;
+		return Integer.parseInt(pros.getProperty(THUMB_IMG_HEIGHT, "200"));
 	}
 
 	public int getThumbImgWidth() {
-		return THUMB_IMG_WIDTH;
+		return Integer.parseInt(pros.getProperty(THUMB_IMG_WIDTH, "200"));
 	}
 
 	private Dimension getThumbSize() {

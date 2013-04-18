@@ -2,15 +2,18 @@ package com.digitali.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "USER")
@@ -34,6 +37,9 @@ public class User implements Serializable {
 	private Date createdDate;
 	@Version
 	private long version;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "createdUser", fetch = FetchType.EAGER)
+	private Set<Photo> photoes = new HashSet<Photo>();
 
 	public long getUserId() {
 		return userId;
@@ -121,6 +127,14 @@ public class User implements Serializable {
 
 	public void setVersion(long version) {
 		this.version = version;
+	}
+
+	public Set<Photo> getPhotoes() {
+		return photoes;
+	}
+
+	public void setPhotoes(Set<Photo> photoes) {
+		this.photoes = photoes;
 	}
 
 	@Override

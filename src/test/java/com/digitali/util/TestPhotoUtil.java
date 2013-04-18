@@ -17,25 +17,25 @@ import com.digitali.entity.Photo;
 @ContextConfiguration(locations = { "classpath:test-serviceContext.xml" })
 public class TestPhotoUtil {
 
+	private static final String SRC__IMAGE = "src/main/webapp/jsp/images/gallery/Ant_01.jpg";
+	
 	@Autowired(required = true)
 	PhotoUtil photoUtil;
 
 	@Before
 	public void setup() {
-		System.out.println("############ " + photoUtil.getBaseLocation());
-		System.out.println("############ " + photoUtil.getImageURI());
+
 	}
 
 	public void createFile() {
-		File file = new File("src/main/webapp/images/gallery/Ant_01.jpg");
+		File file = new File(SRC__IMAGE);
 		Assert.assertTrue(file.exists());
 	}
 
 	@Test
 	public void testStoreImage() {
 		Photo photo = getNewPhoto();
-		photoUtil.storeImage(photo.getFile(), photo.getImgName(), 2L);
-
+		photoUtil.storeImage(photo.getBufferedFile(), photo.getImgName(), 2L);
 		System.out.println("Photo Saved....");
 	}
 
@@ -46,9 +46,9 @@ public class TestPhotoUtil {
 		photo.setCreatedDate(new Date());
 		photo.setDescription("Test description");
 
-		File file = new File("src/main/webapp/images/gallery/Ant_01.jpg");
+		File file = new File(SRC__IMAGE);
 
-		photo.setFile(PhotoUtil.getBufferedImage(file));
+		photo.setBufferedFile(PhotoUtil.getBufferedImage(file));
 		photo.setImgName("Ant_01.jpg");
 
 		return photo;

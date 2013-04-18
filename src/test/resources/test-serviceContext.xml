@@ -20,14 +20,21 @@
 	</bean>
 
 	<bean id="photoUtil" class="com.digitali.util.PhotoUtil">
+		<!-- java.util.Properties -->
+		<property name="pros">
+			<props>
+				<prop key="IMG_UPLOAD_LOCATION">/home/vijitha/temp/img</prop>
+				<prop key="IMG_URI">http://localhost/Photo/</prop>
+				<prop key="THUMB_FOLDER_NAME">thumb</prop>
+				<prop key="THUMB_IMG_HEIGHT">200</prop>
+				<prop key="THUMB_IMG_WIDTH">200</prop>
+			</props>
+		</property>
 	</bean>
 
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="test-ApplicationResources.properties" />
-	</bean>
-
-	<context:property-placeholder
-		location="classpath:test-ApplicationResources.properties" />
+<!-- 	<bean id="propertyConfigurer" -->
+<!-- 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
+<!-- 		<property name="location" value="test-ApplicationResources.properties" /> -->
+<!-- 	</bean> -->
 
 </beans>

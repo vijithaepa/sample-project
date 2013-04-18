@@ -17,7 +17,6 @@ public class UserManager implements UserManagerContract {
 	@Autowired
 	public UserDaoContract userDao;
 
-	@Override
 	public User create(User user) {
 		String password = user.getPassword();
 		user.setPassword(CryptUtil.getInstance().encryptBase64String(password));
@@ -28,31 +27,26 @@ public class UserManager implements UserManagerContract {
 		return savedUser;
 	}
 
-	@Override
 	public User update(User entity) {
 		return userDao.update(entity);
 	}
 
-	@Override
 	@Transactional(propagation=Propagation.REQUIRED)
 	public User delete(User entity) {
 		User user = userDao.get(entity.getUserId());
 		return userDao.delete(user);
 	}
 
-	@Override
 	public User get(Long entityId) {
 		User user = userDao.get(entityId);
 		return user;
 	}
 
-	@Override
 	public User findByEmail(String email) {
 		User user = userDao.findByEmail(email);
 		return user;
 	}
 
-	@Override
 	public User findByCredentials(String userName, String password) {
 		return userDao.findByCredentials(userName, CryptUtil.getInstance().encryptBase64String(password));
 	}

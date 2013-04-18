@@ -1,5 +1,7 @@
 package com.digitali.business.photo;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,14 +17,13 @@ public class PhotoManager implements PhotoManagerContract {
 
 	@Autowired
 	private PhotoDaoContract photoDao;
-	
+
 	@Autowired
 	private UserDaoContract userDao;
 
 	@Autowired
 	private PhotoUtil photoUtil;
 
-	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Photo create(Photo entity) {
 		User user = userDao.get(entity.getCreatedUser().getUserId());
@@ -32,22 +33,25 @@ public class PhotoManager implements PhotoManagerContract {
 		return photo;
 	}
 
-	@Override
 	public Photo update(Photo entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Photo delete(Photo entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Photo get(Long entityId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Set<Photo> getAll(long userId) {
+		User user = userDao.get(userId);
+		Set<Photo> photSet = user.getPhotoes();
+		return photSet;
 	}
 
 }

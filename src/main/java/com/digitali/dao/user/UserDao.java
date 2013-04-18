@@ -26,32 +26,27 @@ public class UserDao implements UserDaoContract {
 	@PersistenceContext
 	private EntityManager em;
 
-	@Override
 	public User create(User user) {
 		em.persist(user);
 		logger.debug("User - " + user.getUsername() + " Created");
 		return user;
 	}
 
-	@Override
 	public User update(User user) {
 		User updatedUser = em.merge(user);
 		return updatedUser;
 	}
 
-	@Override
 	public User delete(User user) {
 		em.remove(user);
 		return user;
 
 	}
 
-	@Override
 	public User get(Long userId) {
 		return em.find(User.class, userId);
 	}
 
-	@Override
 	public User findByEmail(String email) {
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 		CriteriaQuery<User> criteria = builder.createQuery(User.class);
@@ -67,7 +62,6 @@ public class UserDao implements UserDaoContract {
 		return em.createQuery(criteria).getSingleResult();
 	}
 
-	@Override
 	public List<User> findAllOrderedByName() {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<User> criteria = cb.createQuery(User.class);
@@ -82,7 +76,6 @@ public class UserDao implements UserDaoContract {
 		return em.createQuery(criteria).getResultList();
 	}
 
-	@Override
 	public User findByCredentials(String userName, String password) {
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 		CriteriaQuery<User> criteria = builder.createQuery(User.class);

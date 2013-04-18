@@ -3,7 +3,6 @@ package com.digitali.entity;
 import java.awt.image.BufferedImage;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +24,7 @@ public class Photo {
 	private String caption;
 	private String description;
 	private String category;
-	private String imgLocation;	// Server location
+	private String imgLocation; // Server location
 	private String imgName;
 	@Transient
 	private BufferedImage bufferedFile;
@@ -33,8 +32,8 @@ public class Photo {
 	@Version
 	private long version;
 	private Date createdDate;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "USER_ID")
+	@ManyToOne
+	@JoinColumn(name = "USER_ID", nullable=false)
 	private User createdUser;
 
 	public long getPhotoId() {
@@ -131,6 +130,55 @@ public class Photo {
 
 	public void setCreatedUser(User createdUser) {
 		this.createdUser = createdUser;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((caption == null) ? 0 : caption.hashCode());
+		result = prime * result + ((category == null) ? 0 : category.hashCode());
+		result = prime * result + ((createdUser == null) ? 0 : createdUser.hashCode());
+		result = prime * result + ((imgLocation == null) ? 0 : imgLocation.hashCode());
+		result = prime * result + ((imgName == null) ? 0 : imgName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Photo other = (Photo) obj;
+		if (caption == null) {
+			if (other.caption != null)
+				return false;
+		} else if (!caption.equals(other.caption))
+			return false;
+		if (category == null) {
+			if (other.category != null)
+				return false;
+		} else if (!category.equals(other.category))
+			return false;
+		if (createdUser == null) {
+			if (other.createdUser != null)
+				return false;
+		} else if (!createdUser.equals(other.createdUser))
+			return false;
+		if (imgLocation == null) {
+			if (other.imgLocation != null)
+				return false;
+		} else if (!imgLocation.equals(other.imgLocation))
+			return false;
+		if (imgName == null) {
+			if (other.imgName != null)
+				return false;
+		} else if (!imgName.equals(other.imgName))
+			return false;
+		return true;
 	}
 
 }
