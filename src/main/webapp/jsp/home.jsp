@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="jsp/css/styles.css">
+<link rel="stylesheet" href="/digitaleye/jsp/css/styles.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -26,6 +26,6 @@
 		</div>
 <!-- 		<footer>This is the footer section</footer> -->
 	</div>
-	<script type="text/javascript" src="jsp/js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="/digitaleye/jsp/js/jquery-1.9.1.js"></script>
 </body>
 </html>

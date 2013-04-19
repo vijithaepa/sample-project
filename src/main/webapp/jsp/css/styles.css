@@ -91,6 +91,14 @@ section {
 	margin: 80px auto;
 }
 
+#login_form #error {
+	color: red;
+	float: left;
+	width:350px;
+	margin: 0px;
+	text-indent: 0px;
+}
+
 #login_form #title {
 	font-size: x-large;
 	color: gray;
@@ -103,8 +111,7 @@ section {
 	float: left;
 	width: 100px;
 	height: 25px;
-	margin: 10px 0px;
-	border: 0px solid red;
+	margin: 0px;
 }
 
 #login_form input.text {

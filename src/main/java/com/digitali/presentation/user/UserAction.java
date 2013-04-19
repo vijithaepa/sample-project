@@ -61,6 +61,10 @@ public class UserAction extends BaseDispatchAction {
 	public ActionForward userRegisterAction(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		logger.debug("########### Inside the userRegister");
+
+		// ActionErrors errors = new ActionErrors();
+		// errors.add("common.name.err", new ActionMessage("error.common.name.required"));
+
 		DynaActionForm registrationForm = (DynaActionForm) form;
 		User user = (User) registrationForm.get("user");
 		user.setCreatedDate(new Date());
@@ -91,7 +95,8 @@ public class UserAction extends BaseDispatchAction {
 			logger.info(" # User Authenticated : " + userName + " , " + user.toString());
 		} else {
 			ActionErrors errors = new ActionErrors();
-			errors.add(ActionErrors.GLOBAL_MESSAGE, new ActionMessage("error.login"));
+//			errors.add(ActionErrors.GLOBAL_MESSAGE, new ActionMessage("error.login"));
+			errors.add("login.error", new ActionMessage("error.login"));
 			saveErrors(request, errors);
 			logger.info(" # User Invalid : " + userName + " , " + password);
 			return "fail";

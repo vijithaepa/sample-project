@@ -3,6 +3,7 @@ package com.digitali.dao.user;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -89,7 +90,13 @@ public class UserDao implements UserDaoContract {
 
 		criteria.where(builder.equal(user.get("username"), userName));
 		criteria.where(builder.and(builder.equal(user.get("password"), password)));
-		return em.createQuery(criteria).getSingleResult();
+		User newUser;
+		try {
+			newUser = em.createQuery(criteria).getSingleResult();
+		} catch (NoResultException e) {
+			newUser = null;
+		}
+		return newUser;
 
 	}
 

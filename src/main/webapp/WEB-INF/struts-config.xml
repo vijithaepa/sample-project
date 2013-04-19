@@ -49,10 +49,11 @@
 
 		<action path="/user/login"
 			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="userForm" validate="true" input="/jsp/user/myLoginPage.jsp"
 			parameter="method">
 			<set-property property="method" value="userLoginAction" />
 			<forward name="success" path="/jsp/user/myPhotoPage.jsp" />
-			<forward name="fail" path="/jsp/user/login.jsp" />
+			<forward name="fail" path="/jsp/user/myLoginPage.jsp" />
 		</action>
 
 		<action path="/user/registerHome"
