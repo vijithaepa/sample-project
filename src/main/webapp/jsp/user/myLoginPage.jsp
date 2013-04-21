@@ -26,12 +26,10 @@
 					<html:form action="/user/login.do" method="post">
 						<label id="title">User Login</label>
 						<div id="error">
-							<html:errors property="login.error" />
+							<html:errors property="errors.login" />
 						</div>
-						<div id="error"><html:errors property="user.username" /></div>
 						<label>User Name :</label>
 						<html:text name="userForm" property="user.username" styleClass="text"/>
-						<div id="error"><html:errors property="user.password" /></div>
 						<label>Password :</label>
 						<html:password name="userForm" property="user.password" styleClass="text" />
 						<div id="buttons">

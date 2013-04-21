@@ -6,49 +6,45 @@
 
 <form-validation>
 
-	<!--
-		This is a minimal Validator form file with a couple of examples.
-	-->
+	<!-- This is a minimal Validator form file with a couple of examples. -->
 
 	<global>
 
-		<!--
-			An example global constant <constant>
-			<constant-name>postalCode</constant-name>
-			<constant-value>^\d{5}\d*$</constant-value> </constant> end example
-		-->
+		<!-- An example global constant <constant> <constant-name>postalCode</constant-name> 
+			<constant-value>^\d{5}\d*$</constant-value> </constant> end example -->
 
 	</global>
 
 	<formset>
 
 		<form name="/user/login">
-			<field property="user.username" depends="required">
-				<arg key="loginForm.userName" />
-			</field>
-			<field property="user.password" depends="required,minlength">
-				<arg0 key="loginForm.password" />
+			<field property="user.username" depends="loginValidator,minlength">
+				<arg0 key="loginForm.username" />
 				<arg1 key="${var:minlength}" name="minlength" resource="false" />
 				<var>
 					<var-name>minlength</var-name>
 					<var-value>6</var-value>
 				</var>
+				<var>
+					<var-name>secondProperty</var-name>
+					<var-value>user.password</var-value>
+				</var>
 			</field>
 		</form>
 
 		<!-- An example form -->
-<!--		<form name="logonForm">-->
-<!--			<field property="username" depends="required">-->
-<!--				<arg key="logonForm.username" />-->
-<!--			</field>-->
-<!--			<field property="password" depends="required,mask">-->
-<!--				<arg key="logonForm.password" />-->
-<!--				<var>-->
-<!--					<var-name>mask</var-name>-->
-<!--					<var-value>^[0-9a-zA-Z]*$</var-value>-->
-<!--				</var>-->
-<!--			</field>-->
-<!--		</form>-->
+		<!-- <form name="logonForm"> -->
+		<!-- <field property="username" depends="required"> -->
+		<!-- <arg key="logonForm.username" /> -->
+		<!-- </field> -->
+		<!-- <field property="password" depends="required,mask"> -->
+		<!-- <arg key="logonForm.password" /> -->
+		<!-- <var> -->
+		<!-- <var-name>mask</var-name> -->
+		<!-- <var-value>^[0-9a-zA-Z]*$</var-value> -->
+		<!-- </var> -->
+		<!-- </field> -->
+		<!-- </form> -->
 
 	</formset>
 

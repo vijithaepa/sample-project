@@ -30,6 +30,14 @@ import com.digitali.presentation.BaseDispatchAction;
  */
 public class UserAction extends BaseDispatchAction {
 
+	private static final String STRING_EMPTY = "";
+
+	private static final String FAIL = "fail";
+
+	private static final String SUCCESS = "success";
+
+	private static final String USER = "user";
+
 	private final Logger logger = Logger.getLogger(this.getClass());
 
 	@Autowired
@@ -38,16 +46,18 @@ public class UserAction extends BaseDispatchAction {
 	public ActionForward loadMyHomePageAction(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		return mapping.findForward("success");
+		return mapping.findForward(SUCCESS);
 	}
 
 	public ActionForward userLoginAction(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		logger.debug(" Inside the userLoginAction");
+		logger.debug("Inside the userLoginAction");
 		PropertyUtilsBean beanUtil = new PropertyUtilsBean();
-		User user = (User) beanUtil.getSimpleProperty(form, "user");
-
-		return mapping.findForward(authenticate(user.getUsername(), user.getPassword(), request));
+		User user = (User) beanUtil.getSimpleProperty(form, USER);
+		String authenticated = authenticate(user.getUsername(), user.getPassword(), request);
+		user.setPassword(STRING_EMPTY);
+		beanUtil.setSimpleProperty(form, USER, user);
+		return mapping.findForward(authenticated);
 	}
 
 	public ActionForward loadRegisterHomePageAction(ActionMapping mapping, ActionForm form, HttpServletRequest request,
@@ -60,16 +70,16 @@ public class UserAction extends BaseDispatchAction {
 
 	public ActionForward userRegisterAction(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		logger.debug("########### Inside the userRegister");
 
 		// ActionErrors errors = new ActionErrors();
-		// errors.add("common.name.err", new ActionMessage("error.common.name.required"));
+		// errors.add("common.name.err", new
+		// ActionMessage("error.common.name.required"));
 
 		DynaActionForm registrationForm = (DynaActionForm) form;
-		User user = (User) registrationForm.get("user");
+		User user = (User) registrationForm.get(USER);
 		user.setCreatedDate(new Date());
 		userManager.create(user);
-		return mapping.findForward("success");
+		return mapping.findForward(SUCCESS);
 	}
 
 	public ActionForward userPhotoUploadHomePageAction(ActionMapping mapping, ActionForm form,
@@ -91,17 +101,16 @@ public class UserAction extends BaseDispatchAction {
 
 		User user = userManager.findByCredentials(userName, password);
 		if (user != null) {
-			request.getSession(true).setAttribute("user", user);
+			request.getSession(true).setAttribute(USER, user);
 			logger.info(" # User Authenticated : " + userName + " , " + user.toString());
 		} else {
 			ActionErrors errors = new ActionErrors();
-//			errors.add(ActionErrors.GLOBAL_MESSAGE, new ActionMessage("error.login"));
-			errors.add("login.error", new ActionMessage("error.login"));
+			errors.add("errors.login", new ActionMessage("errors.login"));
 			saveErrors(request, errors);
 			logger.info(" # User Invalid : " + userName + " , " + password);
-			return "fail";
+			return FAIL;
 		}
-		return "success";
+		return SUCCESS;
 
 	}
 }

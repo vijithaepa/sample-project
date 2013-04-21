@@ -91,27 +91,33 @@ section {
 	margin: 80px auto;
 }
 
-#login_form #error {
-	color: red;
-	float: left;
-	width:350px;
-	margin: 0px;
-	text-indent: 0px;
-}
-
 #login_form #title {
 	font-size: x-large;
 	color: gray;
 	width: 300px;
-	margin: 10px auto;
+	margin: 0px auto;
+}
+
+#login_form #error {
+	color: red;
+	float: left;
+	width: 350px;
+	margin: 0px;
+}
+
+#login_form #error ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 10px 0px;
 }
 
 #login_form label {
 	vertical-align: text-bottom;
 	float: left;
 	width: 100px;
-	height: 25px;
-	margin: 0px;
+	height: 40px;
+	margin-top: 7px;
+	border: 0px solid red;
 }
 
 #login_form input.text {

@@ -1,6 +1,7 @@
 package com.digitali.entity;
 
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,7 +16,10 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name = "PHOTO")
-public class Photo {
+public class Photo implements Serializable{
+
+	private static final long serialVersionUID = 2542599624514279640L;
+	
 	@Id
 	@GeneratedValue
 	@Column(name = "PHOTO_ID")

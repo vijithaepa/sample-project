@@ -3,7 +3,7 @@
 <!DOCTYPE struts-config PUBLIC
        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
-       
+
 <struts-config>
 
 	<!-- ==================== Form Bean Definitions -->
@@ -49,7 +49,7 @@
 
 		<action path="/user/login"
 			type="org.springframework.web.struts.DelegatingActionProxy"
-			name="userForm" validate="true" input="/jsp/user/myLoginPage.jsp"
+			name="userForm"	validate="true" input="/jsp/user/myLoginPage.jsp"
 			parameter="method">
 			<set-property property="method" value="userLoginAction" />
 			<forward name="success" path="/jsp/user/myPhotoPage.jsp" />
