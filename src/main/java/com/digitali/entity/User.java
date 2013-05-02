@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.Version;
 
 @Entity
@@ -25,13 +26,17 @@ public class User implements Serializable {
 	@GeneratedValue
 	@Column(name = "USER_ID")
 	private long userId;
+	private String fullName;
+	@Column(unique = true, nullable = false)
 	private String username;
 	private String password;
-	private String gender;
+	@Transient
+	private String rePassword;
 	private long age;
 	@Column(unique = true, nullable = false)
 	private String email;
 	private String phoneNo;
+	private String gender;
 	private String[] newsletterFrequency;
 	private String profession;
 	private Date createdDate;
@@ -49,6 +54,14 @@ public class User implements Serializable {
 		this.userId = userId;
 	}
 
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -63,6 +76,14 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getRePassword() {
+		return rePassword;
+	}
+
+	public void setRePassword(String rePassword) {
+		this.rePassword = rePassword;
 	}
 
 	public String getGender() {

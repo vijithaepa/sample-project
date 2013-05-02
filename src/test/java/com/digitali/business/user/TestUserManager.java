@@ -72,11 +72,12 @@ public class TestUserManager {
 
 	private static User getNewUser() {
 		User user = new User();
+		user.setFullName("Nandika Epa");
+		user.setUsername("vijitha");
+		user.setPassword("epa123");
 		user.setAge(20);
 		user.setEmail("testing@sdf.com");
 		user.setGender("M");
-		user.setPassword("epa123");
-		user.setUsername("vijitha");
 		user.setPhoneNo("237463249");
 		return user;
 	}

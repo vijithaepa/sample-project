@@ -37,7 +37,7 @@
 							<html:reset styleClass="button">Reset</html:reset>
 						</div>
 						<a href="#">forgotten password ?</a>
-						<a href="myRegisterPage.html">new user ?</a>
+						<html:link action="/user/registerHome.do">new user ?</html:link></li>
 					</html:form>
 				</div>
 			</section>

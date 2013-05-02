@@ -33,18 +33,19 @@
 		</form>
 
 		<!-- An example form -->
-		<!-- <form name="logonForm"> -->
-		<!-- <field property="username" depends="required"> -->
-		<!-- <arg key="logonForm.username" /> -->
-		<!-- </field> -->
-		<!-- <field property="password" depends="required,mask"> -->
-		<!-- <arg key="logonForm.password" /> -->
-		<!-- <var> -->
-		<!-- <var-name>mask</var-name> -->
-		<!-- <var-value>^[0-9a-zA-Z]*$</var-value> -->
-		<!-- </var> -->
-		<!-- </field> -->
-		<!-- </form> -->
+		<form name="/user/register">
+			<field property="user.username" depends="required">
+				<arg key="loginForm.username" />
+			</field>
+			<field property="user.password" depends="required,mask">
+				<arg key="loginForm.password" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9@*#$]{6,15})$</var-value>
+<!-- 					<var-value>^[0-9a-zA-Z]*$</var-value> -->
+				</var>
+			</field>
+		</form>
 
 	</formset>
 

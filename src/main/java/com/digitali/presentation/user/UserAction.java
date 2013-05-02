@@ -3,9 +3,7 @@
  */
 package com.digitali.presentation.user;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -62,23 +60,23 @@ public class UserAction extends BaseDispatchAction {
 
 	public ActionForward loadRegisterHomePageAction(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		List<User> userLIst = new ArrayList<User>(); 	// userManager.getAllUsers();
-		request.setAttribute("userList", userLIst);
-		request.setAttribute("resultSize", userLIst.size());
-		return mapping.findForward("registerHome");
+		return mapping.findForward(SUCCESS);
 	}
 
 	public ActionForward userRegisterAction(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
+		DynaActionForm registrationForm = (DynaActionForm) form;
+		User user = (User) registrationForm.get(USER);
+		user.setCreatedDate(new Date());
+		
+		userManager.create(user);
+		
 		// ActionErrors errors = new ActionErrors();
 		// errors.add("common.name.err", new
 		// ActionMessage("error.common.name.required"));
 
-		DynaActionForm registrationForm = (DynaActionForm) form;
-		User user = (User) registrationForm.get(USER);
-		user.setCreatedDate(new Date());
-		userManager.create(user);
+
 		return mapping.findForward(SUCCESS);
 	}
 

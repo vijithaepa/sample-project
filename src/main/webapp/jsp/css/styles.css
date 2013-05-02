@@ -154,49 +154,68 @@ section {
 
 /*  -- MyPage > Register */
 #registry_form {
-	width: 445px;
+	width: 450px;
 	margin: 0px auto;
-	padding: 25px;
+	padding-top: 5px;
+	border: 0px solid green;
 }
 
 #registry_form #title {
 	font-size: x-large;
+	float: left;
 	color: gray;
 	width: 500px;
-	margin: 10px auto;
+	margin: 30px auto;
+}
+
+#main_display #register_error {
+	color: red;
+	float: left;
+	width: 170px;
+	margin-top: 50px;
+	border: 0px solid blue;
+}
+
+#main_display #register_error ul {
+	padding: 0px;
+	margin-top: 0px;
+	margin-left: 25px;
 }
 
 #registry_form label {
 	vertical-align: text-bottom;
 	float: left;
-	width: 130px;
-	height: 20px;
-	margin: 10px 0px;
+	width: 150px;
+	height: 15px;
+	margin: 5px 0px;
 	padding-left: 25px;
 }
 
 #registry_form input.text {
 	width: 200px;
-	margin: 10px 30px;
 	padding: 5px;
-	margin: 10px 30px
+	margin: 7px 30px
 }
 
 #registry_form input.radio {
 	width: 70px;
-	margin: 10px auto;
+	margin: 6px auto;
+}
+
+#registry_form label.lbl {
+	margin-top: 18px;
 }
 
 #registry_form input.check {
 	width: 12px;
-	margin-top: 10px;
-	margin-left: 27px;
+	margin-top: 20px;
+	margin-left: 29px;
 }
 
 #registry_form select {
-	width: 215px;
+	width: 200px;
 	height: 24px;
-	margin-top: 10px;
+	margin-top: 20px;
 	margin-left: 30px;
 }
 
