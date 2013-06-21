@@ -1,3 +1,4 @@
+<!DOCTYPE>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="/tags/struts-html" prefix="html"%>
 <html:html>
